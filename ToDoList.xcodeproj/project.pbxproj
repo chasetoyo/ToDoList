@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA4EADFA257C1DD900E0B0F5 /* StorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EADF9257C1DD900E0B0F5 /* StorageHandler.swift */; };
+		AA4EAE07257C314200E0B0F5 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EAE06257C314200E0B0F5 /* EditViewController.swift */; };
+		AA4EAE0D257C494900E0B0F5 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EAE0C257C494900E0B0F5 /* TaskManager.swift */; };
 		AADF2CF625798C45008DD3AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2CF525798C45008DD3AD /* AppDelegate.swift */; };
 		AADF2CF825798C45008DD3AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2CF725798C45008DD3AD /* SceneDelegate.swift */; };
 		AADF2CFA25798C45008DD3AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2CF925798C45008DD3AD /* ViewController.swift */; };
 		AADF2CFD25798C45008DD3AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADF2CFB25798C45008DD3AD /* Main.storyboard */; };
 		AADF2CFF25798C47008DD3AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AADF2CFE25798C47008DD3AD /* Assets.xcassets */; };
 		AADF2D0225798C47008DD3AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADF2D0025798C47008DD3AD /* LaunchScreen.storyboard */; };
-		AADF2D0B257996AB008DD3AD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF2D0A257996AB008DD3AD /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA4EADF9257C1DD900E0B0F5 /* StorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHandler.swift; sourceTree = "<group>"; };
+		AA4EAE06257C314200E0B0F5 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		AA4EAE0C257C494900E0B0F5 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		AADF2CF225798C45008DD3AD /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADF2CF525798C45008DD3AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AADF2CF725798C45008DD3AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -25,7 +30,6 @@
 		AADF2CFE25798C47008DD3AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AADF2D0125798C47008DD3AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AADF2D0325798C47008DD3AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AADF2D0A257996AB008DD3AD /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +69,9 @@
 				AADF2CFE25798C47008DD3AD /* Assets.xcassets */,
 				AADF2D0025798C47008DD3AD /* LaunchScreen.storyboard */,
 				AADF2D0325798C47008DD3AD /* Info.plist */,
-				AADF2D0A257996AB008DD3AD /* TableViewController.swift */,
+				AA4EADF9257C1DD900E0B0F5 /* StorageHandler.swift */,
+				AA4EAE06257C314200E0B0F5 /* EditViewController.swift */,
+				AA4EAE0C257C494900E0B0F5 /* TaskManager.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -140,10 +146,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA4EAE07257C314200E0B0F5 /* EditViewController.swift in Sources */,
 				AADF2CFA25798C45008DD3AD /* ViewController.swift in Sources */,
 				AADF2CF625798C45008DD3AD /* AppDelegate.swift in Sources */,
 				AADF2CF825798C45008DD3AD /* SceneDelegate.swift in Sources */,
-				AADF2D0B257996AB008DD3AD /* TableViewController.swift in Sources */,
+				AA4EAE0D257C494900E0B0F5 /* TaskManager.swift in Sources */,
+				AA4EADFA257C1DD900E0B0F5 /* StorageHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
