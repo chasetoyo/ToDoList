@@ -9,6 +9,7 @@ import Foundation
 
 struct TaskManager {
     static var taskCollection: [Task] = []
+    static var currentIndex: Int = 0
 }
 
 struct Task: Codable {

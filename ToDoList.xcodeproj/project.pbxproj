@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA2FAB532580A80D0007ED22 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2FAB522580A80D0007ED22 /* AddViewController.swift */; };
 		AA4EADFA257C1DD900E0B0F5 /* StorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EADF9257C1DD900E0B0F5 /* StorageHandler.swift */; };
 		AA4EAE07257C314200E0B0F5 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EAE06257C314200E0B0F5 /* EditViewController.swift */; };
 		AA4EAE0D257C494900E0B0F5 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EAE0C257C494900E0B0F5 /* TaskManager.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA2FAB522580A80D0007ED22 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		AA4EADF9257C1DD900E0B0F5 /* StorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHandler.swift; sourceTree = "<group>"; };
 		AA4EAE06257C314200E0B0F5 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		AA4EAE0C257C494900E0B0F5 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				AA4EADF9257C1DD900E0B0F5 /* StorageHandler.swift */,
 				AA4EAE06257C314200E0B0F5 /* EditViewController.swift */,
 				AA4EAE0C257C494900E0B0F5 /* TaskManager.swift */,
+				AA2FAB522580A80D0007ED22 /* AddViewController.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			files = (
 				AA4EAE07257C314200E0B0F5 /* EditViewController.swift in Sources */,
 				AADF2CFA25798C45008DD3AD /* ViewController.swift in Sources */,
+				AA2FAB532580A80D0007ED22 /* AddViewController.swift in Sources */,
 				AADF2CF625798C45008DD3AD /* AppDelegate.swift in Sources */,
 				AADF2CF825798C45008DD3AD /* SceneDelegate.swift in Sources */,
 				AA4EAE0D257C494900E0B0F5 /* TaskManager.swift in Sources */,

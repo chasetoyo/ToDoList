@@ -30,21 +30,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let item = TaskManager.taskCollection[indexPath.item]
         cell.textLabel?.text = item.title
-        cell.detailTextLabel?.text = item.category
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd hh:mm"
+        cell.detailTextLabel?.text = df.string(from: item.date)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(TaskManager.taskCollection[indexPath.item])
+        TaskManager.currentIndex = indexPath.item
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondVC = storyboard.instantiateViewController(identifier: "edit")
+                
+        secondVC.modalPresentationStyle = .fullScreen
+        secondVC.modalTransitionStyle = .crossDissolve
+        
+        present(secondVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        print("tapped")
+        print(indexPath.item)
+        StorageHandler.delete(index: indexPath.item)
+        
+        DispatchQueue.main.async { tableView.reloadData() }
     }
     
     @IBAction func new(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondVC = storyboard.instantiateViewController(identifier: "edit")
+        let secondVC = storyboard.instantiateViewController(identifier: "add")
                 
         secondVC.modalPresentationStyle = .fullScreen
         secondVC.modalTransitionStyle = .crossDissolve

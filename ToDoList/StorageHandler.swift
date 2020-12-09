@@ -34,6 +34,18 @@ struct StorageHandler {
         defaultStorage.set(encodeCollection(), forKey: self.defaultKey)
     }
     
+    static func edit(index: Int, value: Task) {
+        TaskManager.taskCollection[index] = value
+        
+        defaultStorage.set(encodeCollection(), forKey: self.defaultKey)
+    }
+    
+    static func delete(index: Int) {
+        TaskManager.taskCollection.remove(at: index)
+        
+        defaultStorage.set(encodeCollection(), forKey: self.defaultKey)
+    }
+    
     static func encodeCollection() -> String {
         //json encoder
         let encoder = JSONEncoder()

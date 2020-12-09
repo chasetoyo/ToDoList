@@ -1,5 +1,5 @@
 //
-//  EditViewController.swift
+//  AddViewController.swift
 //  ToDoList
 //
 //  Created by cpsc on 12/5/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditViewController: UIViewController {
+class AddViewController: UIViewController {
 
     @IBOutlet var inputTitle: UITextField!
     @IBOutlet var inputCategory: UITextField!
@@ -15,18 +15,13 @@ class EditViewController: UIViewController {
     
     @IBOutlet var back: UIButton!
     @IBOutlet var done: UIButton!
-    @IBOutlet var delete: UIButton!
-   
+    
     var inputTask = Task()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTask = Task()
         // Do any additional setup after loading the view.
-        
-        inputTitle.text = TaskManager.taskCollection[TaskManager.currentIndex].title
-        inputCategory.text = TaskManager.taskCollection[TaskManager.currentIndex].category
-        inputDate.date = TaskManager.taskCollection[TaskManager.currentIndex].date
         
         NotificationCenter.default.addObserver(self, selector: #selector(EditViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -52,7 +47,7 @@ class EditViewController: UIViewController {
         editTitle(self)
         editCategory(self)
         editDate(self)
-        StorageHandler.edit(index: TaskManager.currentIndex, value: inputTask)
+        StorageHandler.set(value: inputTask)
         goBack(self)
     }
     
@@ -71,11 +66,6 @@ class EditViewController: UIViewController {
         print(inputDate.date)
         let theDate = inputDate.date
         inputTask.date = theDate
-    }
-    
-    @IBAction func deleteTask(_ sender: Any) {
-        StorageHandler.delete(index: TaskManager.currentIndex)
-        goBack(self)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -110,7 +100,7 @@ class EditViewController: UIViewController {
     }
 }
 
-extension EditViewController : UITextFieldDelegate {
+extension AddViewController : UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.inputTitle = textField
