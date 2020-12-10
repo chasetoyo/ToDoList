@@ -20,23 +20,41 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var mainView: UIView!
     @IBOutlet var addButton: UIButton!
     
+    var dateSelected = true
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Count:", StorageHandler.storageCount())
+        print(StorageHandler.storageCount())
         return StorageHandler.storageCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         StorageHandler.getStorage()
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
         let item = TaskManager.taskCollection[indexPath.item]
         cell.textLabel?.text = item.title
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd hh:mm"
-        cell.detailTextLabel?.text = df.string(from: item.date)
+        
+        if dateSelected == true {
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd hh:mm"
+            cell.detailTextLabel?.text = df.string(from: item.date)
+        }
+        else {
+            cell.detailTextLabel?.text = item.category
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.item)
+        StorageHandler.delete(index: indexPath.item)
+        
+        DispatchQueue.main.async { tableView.reloadData()
+        }
+        viewDidLoad()
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         TaskManager.currentIndex = indexPath.item
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "edit")
@@ -47,13 +65,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         present(secondVC, animated: true, completion: nil)
     }
     
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        print(indexPath.item)
-        StorageHandler.delete(index: indexPath.item)
-        
-        DispatchQueue.main.async { tableView.reloadData() }
-    }
-    
     @IBAction func new(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "add")
@@ -62,6 +73,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         secondVC.modalTransitionStyle = .crossDissolve
         
         present(secondVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func sortByDate(_ sender: Any) { TaskManager.taskCollection.sort {
+               $0.date < $1.date
+           }
+        StorageHandler.set()
+        dateSelected = true
+        list.reloadData()
+    }
+    
+    @IBAction func sortByCategory(_ sender: Any) {
+        TaskManager.taskCollection.sort {
+            $0.category < $1.category
+        }
+        dateSelected = false
+        StorageHandler.set()
+        list.reloadData()
     }
     
     override func viewDidLoad() {

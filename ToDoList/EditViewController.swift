@@ -12,6 +12,7 @@ class EditViewController: UIViewController {
     @IBOutlet var inputTitle: UITextField!
     @IBOutlet var inputCategory: UITextField!
     @IBOutlet var inputDate: UIDatePicker!
+    @IBOutlet var inputNotes: UITextField!
     
     @IBOutlet var back: UIButton!
     @IBOutlet var done: UIButton!
@@ -27,6 +28,7 @@ class EditViewController: UIViewController {
         inputTitle.text = TaskManager.taskCollection[TaskManager.currentIndex].title
         inputCategory.text = TaskManager.taskCollection[TaskManager.currentIndex].category
         inputDate.date = TaskManager.taskCollection[TaskManager.currentIndex].date
+        inputNotes.text = TaskManager.taskCollection[TaskManager.currentIndex].notes
         
         NotificationCenter.default.addObserver(self, selector: #selector(EditViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -52,6 +54,7 @@ class EditViewController: UIViewController {
         editTitle(self)
         editCategory(self)
         editDate(self)
+        editNotes(self)
         StorageHandler.edit(index: TaskManager.currentIndex, value: inputTask)
         goBack(self)
     }
@@ -71,6 +74,11 @@ class EditViewController: UIViewController {
         print(inputDate.date)
         let theDate = inputDate.date
         inputTask.date = theDate
+    }
+    
+    @IBAction func editNotes(_ sender: Any) {
+        let theText = String(inputNotes.text!)
+        inputTask.notes = theText
     }
     
     @IBAction func deleteTask(_ sender: Any) {

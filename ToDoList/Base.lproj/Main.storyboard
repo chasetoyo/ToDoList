@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,8 +18,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0WM-BB-JGF">
-                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -47,31 +49,63 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjq-x3-M5a">
-                                <rect key="frame" x="364" y="44" width="20" height="45"/>
-                                <state key="normal" image="plus.circle" catalog="system"/>
+                                <rect key="frame" x="359" y="819" width="25" height="24"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
+                                </state>
                                 <connections>
                                     <action selector="new:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pvF-bM-uns"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9n4-2G-Qfc">
+                                <rect key="frame" x="30" y="56" width="42" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzJ-Sg-nlb">
+                                <rect key="frame" x="351" y="56" width="33" height="38"/>
+                                <state key="normal" title="Date"/>
+                                <connections>
+                                    <action selector="sortByDate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NTD-QR-pE8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5T-6R-2vD">
+                                <rect key="frame" x="228" y="56" width="63" height="38"/>
+                                <state key="normal" title="Category"/>
+                                <connections>
+                                    <action selector="sortByCategory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="haM-CX-ejD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7pV-0R-VQX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="rjq-x3-M5a" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" id="468-z9-VMG"/>
+                            <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="9n4-2G-Qfc" secondAttribute="bottom" constant="5" id="1pB-xW-g2r"/>
+                            <constraint firstItem="DzJ-Sg-nlb" firstAttribute="leading" secondItem="M5T-6R-2vD" secondAttribute="trailing" constant="60" id="2sY-8N-NXC"/>
+                            <constraint firstItem="M5T-6R-2vD" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" constant="12" id="BGz-Np-uDe"/>
                             <constraint firstItem="0WM-BB-JGF" firstAttribute="leading" secondItem="7pV-0R-VQX" secondAttribute="leading" id="DOj-dQ-4lB"/>
+                            <constraint firstItem="7pV-0R-VQX" firstAttribute="bottom" secondItem="rjq-x3-M5a" secondAttribute="bottom" constant="19" id="Jw9-vG-fQD"/>
                             <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" constant="50" id="S7J-ge-vKc"/>
                             <constraint firstItem="7pV-0R-VQX" firstAttribute="trailing" secondItem="0WM-BB-JGF" secondAttribute="trailing" id="ZgN-eB-Kxy"/>
-                            <constraint firstItem="7pV-0R-VQX" firstAttribute="bottom" secondItem="0WM-BB-JGF" secondAttribute="bottom" id="nUy-Qq-gyT"/>
-                            <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="rjq-x3-M5a" secondAttribute="bottom" constant="5" id="nuL-YS-dg7"/>
-                            <constraint firstItem="7pV-0R-VQX" firstAttribute="trailing" secondItem="rjq-x3-M5a" secondAttribute="trailing" constant="30" id="zYt-AW-q30"/>
+                            <constraint firstItem="9n4-2G-Qfc" firstAttribute="leading" secondItem="7pV-0R-VQX" secondAttribute="leading" constant="30" id="fPN-uj-eSb"/>
+                            <constraint firstItem="DzJ-Sg-nlb" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" constant="12" id="mIC-Nu-U5W"/>
+                            <constraint firstItem="7pV-0R-VQX" firstAttribute="bottom" secondItem="0WM-BB-JGF" secondAttribute="bottom" constant="50" id="nUy-Qq-gyT"/>
+                            <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="DzJ-Sg-nlb" secondAttribute="bottom" id="oRo-xN-6qQ"/>
+                            <constraint firstItem="7pV-0R-VQX" firstAttribute="trailing" secondItem="rjq-x3-M5a" secondAttribute="trailing" constant="30" id="p9W-n5-bBj"/>
+                            <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="M5T-6R-2vD" secondAttribute="bottom" id="qnJ-mm-cnY"/>
+                            <constraint firstItem="7pV-0R-VQX" firstAttribute="trailing" secondItem="DzJ-Sg-nlb" secondAttribute="trailing" constant="30" id="wJ4-4M-JeQ"/>
+                            <constraint firstItem="9n4-2G-Qfc" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" constant="12" id="xeB-hN-OhT"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="rjq-x3-M5a" id="QaJ-cu-0Pk"/>
                         <outlet property="list" destination="0WM-BB-JGF" id="cIV-ti-8VW"/>
                         <outlet property="mainView" destination="148-wN-TIF" id="EnG-R8-1mH"/>
+                        <outlet property="taskCount" destination="9n4-2G-Qfc" id="77Y-Iv-6ee"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -87,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fH7-RB-SbZ">
-                                <rect key="frame" x="50" y="144" width="314" height="362"/>
+                                <rect key="frame" x="50" y="144" width="314" height="412"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kIa-AA-1cg">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="34"/>
@@ -97,7 +131,7 @@
                                             <action selector="editTitle:" destination="EO0-Z7-v2i" eventType="editingDidEnd" id="8ZP-YF-ipV"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUU-Ph-sA9">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FUU-Ph-sA9">
                                         <rect key="frame" x="0.0" y="50" width="314" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -111,8 +145,16 @@
                                             <action selector="editDate:" destination="EO0-Z7-v2i" eventType="editingDidEnd" id="nab-KK-eDB"/>
                                         </connections>
                                     </datePicker>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bd8-XM-WIG">
+                                        <rect key="frame" x="0.0" y="332" width="314" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="editNotes:" destination="EO0-Z7-v2i" eventType="editingDidEnd" id="EMs-1X-dG9"/>
+                                        </connections>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAY-cO-age">
-                                        <rect key="frame" x="0.0" y="332" width="314" height="30"/>
+                                        <rect key="frame" x="0.0" y="382" width="314" height="30"/>
                                         <state key="normal" title="Delete"/>
                                         <connections>
                                             <action selector="deleteTask:" destination="EO0-Z7-v2i" eventType="touchUpInside" id="DMC-lq-fj5"/>
@@ -121,8 +163,8 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iue-bL-imj">
-                                <rect key="frame" x="30" y="49" width="21" height="22"/>
-                                <state key="normal" image="arrowshape.turn.up.backward.fill" catalog="system"/>
+                                <rect key="frame" x="30" y="49" width="19.5" height="22"/>
+                                <state key="normal" image="arrow.backward" catalog="system"/>
                                 <connections>
                                     <action selector="goBack:" destination="EO0-Z7-v2i" eventType="touchUpInside" id="AGi-IL-tHd"/>
                                 </connections>
@@ -153,6 +195,7 @@
                         <outlet property="done" destination="JlX-8z-Vtj" id="Cge-2k-NyK"/>
                         <outlet property="inputCategory" destination="FUU-Ph-sA9" id="ZAd-1m-X32"/>
                         <outlet property="inputDate" destination="9GG-xg-LWj" id="Vio-qh-KHM"/>
+                        <outlet property="inputNotes" destination="bd8-XM-WIG" id="Ec8-Gr-xdC"/>
                         <outlet property="inputTitle" destination="kIa-AA-1cg" id="w2d-WP-FZb"/>
                     </connections>
                 </viewController>
@@ -169,7 +212,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="feE-n5-qHv">
-                                <rect key="frame" x="50" y="144" width="314" height="316"/>
+                                <rect key="frame" x="50" y="144" width="314" height="366"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="INr-38-7na">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="34"/>
@@ -179,7 +222,7 @@
                                             <action selector="editTitle:" destination="GDc-4c-1DB" eventType="editingDidEnd" id="1dQ-G5-AcB"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Category" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dnn-RL-euJ">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Category" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dnn-RL-euJ">
                                         <rect key="frame" x="0.0" y="50" width="314" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -193,11 +236,19 @@
                                             <action selector="editDate:" destination="GDc-4c-1DB" eventType="editingDidEnd" id="iXH-m6-Fhy"/>
                                         </connections>
                                     </datePicker>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Notes" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5Cc-kg-EqU">
+                                        <rect key="frame" x="0.0" y="332" width="314" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="editNotes:" destination="GDc-4c-1DB" eventType="editingDidEnd" id="TAG-sZ-DTZ"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIK-2f-Yyb">
-                                <rect key="frame" x="30" y="49" width="21" height="22"/>
-                                <state key="normal" image="arrowshape.turn.up.backward.fill" catalog="system"/>
+                                <rect key="frame" x="30" y="49" width="19.5" height="22"/>
+                                <state key="normal" image="arrow.backward" catalog="system"/>
                                 <connections>
                                     <action selector="goBack:" destination="GDc-4c-1DB" eventType="touchUpInside" id="WM9-u6-7Pq"/>
                                 </connections>
@@ -208,11 +259,6 @@
                                 <connections>
                                     <action selector="saveTask:" destination="GDc-4c-1DB" eventType="touchUpInside" id="NuY-dP-maj"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gv9-VJ-c4w">
-                                <rect key="frame" x="184" y="553" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gUN-DI-gGp"/>
@@ -232,6 +278,7 @@
                         <outlet property="done" destination="Bb2-w9-iLH" id="1YO-cF-gcx"/>
                         <outlet property="inputCategory" destination="dnn-RL-euJ" id="8hd-bC-C78"/>
                         <outlet property="inputDate" destination="M8s-FO-PRp" id="oxh-Gt-qbr"/>
+                        <outlet property="inputNotes" destination="5Cc-kg-EqU" id="SZ6-AV-Bxq"/>
                         <outlet property="inputTitle" destination="INr-38-7na" id="kUL-Rz-4PF"/>
                     </connections>
                 </viewController>
@@ -241,7 +288,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -15,5 +15,11 @@ struct TaskManager {
 struct Task: Codable {
     var title = "title1"
     var category = "detail1"
+    var notes = "note1"
     var date = Date()
+}
+
+struct TaskSection {
+    var date: Date
+    var taskCollection: [Task]
 }

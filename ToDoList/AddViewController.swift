@@ -12,6 +12,7 @@ class AddViewController: UIViewController {
     @IBOutlet var inputTitle: UITextField!
     @IBOutlet var inputCategory: UITextField!
     @IBOutlet var inputDate: UIDatePicker!
+    @IBOutlet var inputNotes: UITextField!
     
     @IBOutlet var back: UIButton!
     @IBOutlet var done: UIButton!
@@ -47,6 +48,7 @@ class AddViewController: UIViewController {
         editTitle(self)
         editCategory(self)
         editDate(self)
+        editNotes(self)
         StorageHandler.set(value: inputTask)
         goBack(self)
     }
@@ -66,6 +68,12 @@ class AddViewController: UIViewController {
         print(inputDate.date)
         let theDate = inputDate.date
         inputTask.date = theDate
+    }
+    
+    @IBAction func editNotes(_ sender: Any) {
+        let theNotes = String(inputNotes.text!)
+        print(theNotes)
+        inputTask.notes = theNotes
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
