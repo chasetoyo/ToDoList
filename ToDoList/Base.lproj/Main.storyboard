@@ -60,12 +60,6 @@
                                     <action selector="new:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pvF-bM-uns"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9n4-2G-Qfc">
-                                <rect key="frame" x="30" y="56" width="42" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzJ-Sg-nlb">
                                 <rect key="frame" x="351" y="56" width="33" height="38"/>
                                 <state key="normal" title="Date"/>
@@ -84,28 +78,24 @@
                         <viewLayoutGuide key="safeArea" id="7pV-0R-VQX"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="9n4-2G-Qfc" secondAttribute="bottom" constant="5" id="1pB-xW-g2r"/>
                             <constraint firstItem="DzJ-Sg-nlb" firstAttribute="leading" secondItem="M5T-6R-2vD" secondAttribute="trailing" constant="60" id="2sY-8N-NXC"/>
                             <constraint firstItem="M5T-6R-2vD" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" constant="12" id="BGz-Np-uDe"/>
                             <constraint firstItem="0WM-BB-JGF" firstAttribute="leading" secondItem="7pV-0R-VQX" secondAttribute="leading" id="DOj-dQ-4lB"/>
                             <constraint firstItem="7pV-0R-VQX" firstAttribute="bottom" secondItem="rjq-x3-M5a" secondAttribute="bottom" constant="19" id="Jw9-vG-fQD"/>
                             <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" constant="50" id="S7J-ge-vKc"/>
                             <constraint firstItem="7pV-0R-VQX" firstAttribute="trailing" secondItem="0WM-BB-JGF" secondAttribute="trailing" id="ZgN-eB-Kxy"/>
-                            <constraint firstItem="9n4-2G-Qfc" firstAttribute="leading" secondItem="7pV-0R-VQX" secondAttribute="leading" constant="30" id="fPN-uj-eSb"/>
                             <constraint firstItem="DzJ-Sg-nlb" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" constant="12" id="mIC-Nu-U5W"/>
                             <constraint firstItem="7pV-0R-VQX" firstAttribute="bottom" secondItem="0WM-BB-JGF" secondAttribute="bottom" constant="50" id="nUy-Qq-gyT"/>
                             <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="DzJ-Sg-nlb" secondAttribute="bottom" id="oRo-xN-6qQ"/>
                             <constraint firstItem="7pV-0R-VQX" firstAttribute="trailing" secondItem="rjq-x3-M5a" secondAttribute="trailing" constant="30" id="p9W-n5-bBj"/>
                             <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="M5T-6R-2vD" secondAttribute="bottom" id="qnJ-mm-cnY"/>
                             <constraint firstItem="7pV-0R-VQX" firstAttribute="trailing" secondItem="DzJ-Sg-nlb" secondAttribute="trailing" constant="30" id="wJ4-4M-JeQ"/>
-                            <constraint firstItem="9n4-2G-Qfc" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" constant="12" id="xeB-hN-OhT"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="rjq-x3-M5a" id="QaJ-cu-0Pk"/>
                         <outlet property="list" destination="0WM-BB-JGF" id="cIV-ti-8VW"/>
                         <outlet property="mainView" destination="148-wN-TIF" id="EnG-R8-1mH"/>
-                        <outlet property="taskCount" destination="9n4-2G-Qfc" id="77Y-Iv-6ee"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
