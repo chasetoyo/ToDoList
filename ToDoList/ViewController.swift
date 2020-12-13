@@ -22,36 +22,74 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var dateSelected = true
     
+    var containerView = UIView()
+    var slideUpView = UITableView()
+    let slideUpViewHeight: CGFloat = 200
+    
+    // our simple data source
+    let slideUpViewDataSource: [Int: String] = [
+      0: ("Date"),
+      1: ("Category")
+    ]
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(StorageHandler.storageCount())
-        return StorageHandler.storageCount()
+        if tableView == list { print(StorageHandler.storageCount())
+            return StorageHandler.storageCount()
+        }
+        else {
+            print(slideUpViewDataSource.count)
+            return slideUpViewDataSource.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         StorageHandler.getStorage()
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        let item = TaskManager.taskCollection[indexPath.item]
-        cell.textLabel?.text = item.title
-        
-        if dateSelected == true {
-            let df = DateFormatter()
-            df.dateFormat = "yyyy-MM-dd hh:mm"
-            cell.detailTextLabel?.text = df.string(from: item.date)
+        if tableView == list {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            
+            let item = TaskManager.taskCollection[indexPath.item]
+            cell.textLabel?.text = item.title
+            
+            if dateSelected == true {
+                let df = DateFormatter()
+                df.dateFormat = "yyyy-MM-dd hh:mm"
+                cell.detailTextLabel?.text = df.string(from: item.date)
+            }
+            else {
+                cell.detailTextLabel?.text = item.category
+            }
+            return cell
         }
         else {
-            cell.detailTextLabel?.text = item.category
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "SortingTableViewCell", for: indexPath) as? SortingTableViewCell
+        else { fatalError("unable to deque SortingTableViewCell") }
+        cell.labelView.text = slideUpViewDataSource[indexPath.row]
+          return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.item)
-        StorageHandler.delete(index: indexPath.item)
-        
-        DispatchQueue.main.async { tableView.reloadData()
+        if tableView == list {
+            print(indexPath.item)
+            StorageHandler.delete(index: indexPath.item)
+            
+            DispatchQueue.main.async { tableView.reloadData()
+            }
+            viewDidLoad()
         }
-        viewDidLoad()
+        else {
+            if indexPath.item == 0 {
+                sortByDate(self)
+            }
+            else {
+                sortByCategory(self)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt
+             indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
@@ -92,12 +130,48 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         list.reloadData()
     }
     
+    //on opening
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+        containerView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        containerView.frame = self.view.frame
+        window?.addSubview(containerView)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(slideUpViewTapped))
+        containerView.addGestureRecognizer(tapGesture)
+        containerView.alpha = 0
+
+        let screenSize = UIScreen.main.bounds.size
+          slideUpView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: slideUpViewHeight)
+          slideUpView.separatorStyle = .none
+          window?.addSubview(slideUpView)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.containerView.alpha = 0.8
+            self.slideUpView.frame = CGRect(x: 0, y: screenSize.height - self.slideUpViewHeight, width: screenSize.width, height: self.slideUpViewHeight)
+          }, completion: nil)
+    }
+    
+    // On closing
+    @objc func slideUpViewTapped() {
+        let screenSize = UIScreen.main.bounds.size
+          UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+        self.containerView.alpha = 0
+        self.slideUpView.frame = CGRect(x: 0, y: screenSize.height, width: screenSize.width, height: self.slideUpViewHeight)
+          }, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         list.dataSource = self
         list.delegate = self
+        
+        slideUpView.isScrollEnabled = true
+        slideUpView.delegate = self
+        slideUpView.dataSource = self
+        slideUpView.register(SortingTableViewCell.self, forCellReuseIdentifier: "SortingTableViewCell")
+        
         StorageHandler.getStorage()
     }
 
 }
-

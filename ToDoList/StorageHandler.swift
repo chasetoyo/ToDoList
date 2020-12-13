@@ -42,7 +42,6 @@ struct StorageHandler {
     
     static func delete(index: Int) {
         TaskManager.taskCollection.remove(at: index)
-        
         defaultStorage.set(encodeCollection(), forKey: self.defaultKey)
     }
     
