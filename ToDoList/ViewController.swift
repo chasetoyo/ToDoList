@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var mainView: UIView!
     @IBOutlet var addButton: UIButton!
     
-    var dateSelected = true
+//    var dateSelected = true
     
     var containerView = UIView()
     var slideUpView = UITableView()
@@ -34,12 +34,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // task list
-        if tableView == list { print(StorageHandler.storageCount())
+        if tableView == list {
             return StorageHandler.storageCount()
         }
         //slide up menu
         else {
-            print(slideUpViewDataSource.count)
             return slideUpViewDataSource.count
         }
     }
@@ -53,8 +52,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             //set title, category, date
             let item = TaskManager.taskCollection[indexPath.item]
             cell.textLabel?.text = item.title
-            
-            if dateSelected == true {
+            if TaskManager.dateSelected == true {
                 let df = DateFormatter()
                 df.dateFormat = "yyyy-MM-dd hh:mm"
                 cell.detailTextLabel?.text = df.string(from: item.date)
@@ -119,7 +117,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                $0.date < $1.date
         }
         StorageHandler.set()
-        dateSelected = true
+        TaskManager.dateSelected = true
         list.reloadData()
     }
     
@@ -128,7 +126,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         TaskManager.taskCollection.sort {
             $0.category < $1.category
         }
-        dateSelected = false
+        TaskManager.dateSelected = false
         StorageHandler.set()
         list.reloadData()
     }

@@ -10,6 +10,7 @@ import Foundation
 struct TaskManager {
     static var taskCollection: [Task] = []
     static var currentIndex: Int = 0
+    static var dateSelected: Bool = true
 }
 
 struct Task: Codable {
