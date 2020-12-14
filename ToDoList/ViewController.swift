@@ -33,9 +33,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     ]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // task list
         if tableView == list { print(StorageHandler.storageCount())
             return StorageHandler.storageCount()
         }
+        //slide up menu
         else {
             print(slideUpViewDataSource.count)
             return slideUpViewDataSource.count
@@ -44,9 +46,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         StorageHandler.getStorage()
+        //task list
         if tableView == list {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            
+           
+            //set title, category, date
             let item = TaskManager.taskCollection[indexPath.item]
             cell.textLabel?.text = item.title
             
@@ -63,26 +67,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SortingTableViewCell", for: indexPath) as? SortingTableViewCell
         else { fatalError("unable to deque SortingTableViewCell") }
+        //set cell text
         cell.labelView.text = slideUpViewDataSource[indexPath.row]
           return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //delete if its the list cell tapped
         if tableView == list {
             print(indexPath.item)
             StorageHandler.delete(index: indexPath.item)
             
             DispatchQueue.main.async { tableView.reloadData()
             }
-            viewDidLoad()
+            sceneTransition(scene: "main")
         }
+        //sort if its the slide up cell tapped
         else {
             if indexPath.item == 0 {
                 sortByDate(self)
+                slideUpViewTapped()
             }
             else {
                 sortByCategory(self)
+                slideUpViewTapped()
             }
         }
     }
@@ -93,35 +102,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        //open editing view
         TaskManager.currentIndex = indexPath.item
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondVC = storyboard.instantiateViewController(identifier: "edit")
-                
-        secondVC.modalPresentationStyle = .fullScreen
-        secondVC.modalTransitionStyle = .crossDissolve
-        
-        present(secondVC, animated: true, completion: nil)
+        sceneTransition(scene: "edit")
     }
     
     @IBAction func new(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondVC = storyboard.instantiateViewController(identifier: "add")
-                
-        secondVC.modalPresentationStyle = .fullScreen
-        secondVC.modalTransitionStyle = .crossDissolve
-        
-        present(secondVC, animated: true, completion: nil)
+        //open add item view controller
+       sceneTransition(scene: "add")
     }
     
-    @IBAction func sortByDate(_ sender: Any) { TaskManager.taskCollection.sort {
+    
+    @IBAction func sortByDate(_ sender: Any) {
+        //sort by ascending date
+        TaskManager.taskCollection.sort {
                $0.date < $1.date
-           }
+        }
         StorageHandler.set()
         dateSelected = true
         list.reloadData()
     }
     
     @IBAction func sortByCategory(_ sender: Any) {
+        //sort alphanumerically
         TaskManager.taskCollection.sort {
             $0.category < $1.category
         }
@@ -172,6 +175,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         slideUpView.register(SortingTableViewCell.self, forCellReuseIdentifier: "SortingTableViewCell")
         
         StorageHandler.getStorage()
+    }
+    
+    func sceneTransition(scene: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondVC = storyboard.instantiateViewController(identifier: scene)
+                
+        secondVC.modalPresentationStyle = .fullScreen
+        secondVC.modalTransitionStyle = .crossDissolve
+        
+        present(secondVC, animated: true, completion: nil)
     }
 
 }

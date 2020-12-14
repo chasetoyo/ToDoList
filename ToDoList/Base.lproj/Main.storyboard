@@ -60,10 +60,9 @@
                                     <action selector="new:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pvF-bM-uns"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtK-uU-Vjh">
-                                <rect key="frame" x="94" y="60" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtK-uU-Vjh">
+                                <rect key="frame" x="364" y="60" width="20" height="26"/>
+                                <state key="normal" image="ellipsis.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T35-4n-3qp"/>
                                 </connections>
@@ -72,12 +71,15 @@
                         <viewLayoutGuide key="safeArea" id="7pV-0R-VQX"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="qtK-uU-Vjh" secondAttribute="bottom" constant="8" symbolic="YES" id="C5h-ri-dSr"/>
                             <constraint firstItem="0WM-BB-JGF" firstAttribute="leading" secondItem="7pV-0R-VQX" secondAttribute="leading" id="DOj-dQ-4lB"/>
                             <constraint firstItem="7pV-0R-VQX" firstAttribute="bottom" secondItem="rjq-x3-M5a" secondAttribute="bottom" constant="19" id="Jw9-vG-fQD"/>
                             <constraint firstItem="0WM-BB-JGF" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" constant="50" id="S7J-ge-vKc"/>
                             <constraint firstItem="7pV-0R-VQX" firstAttribute="trailing" secondItem="0WM-BB-JGF" secondAttribute="trailing" id="ZgN-eB-Kxy"/>
                             <constraint firstItem="7pV-0R-VQX" firstAttribute="bottom" secondItem="0WM-BB-JGF" secondAttribute="bottom" constant="50" id="nUy-Qq-gyT"/>
                             <constraint firstItem="7pV-0R-VQX" firstAttribute="trailing" secondItem="rjq-x3-M5a" secondAttribute="trailing" constant="30" id="p9W-n5-bBj"/>
+                            <constraint firstItem="qtK-uU-Vjh" firstAttribute="top" secondItem="7pV-0R-VQX" secondAttribute="top" constant="16" id="wf1-lq-769"/>
+                            <constraint firstItem="7pV-0R-VQX" firstAttribute="trailing" secondItem="qtK-uU-Vjh" secondAttribute="trailing" constant="30" id="yCT-XD-ymg"/>
                         </constraints>
                     </view>
                     <connections>
@@ -267,6 +269,7 @@
     </scenes>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
+        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
